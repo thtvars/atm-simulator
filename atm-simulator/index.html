@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header> 
+        <h2>Welcome to</h2>
+        <h1>Tovar Bank</h1>
+        <img src="mb-logo.jpg" alt="a minimalist logo the slogan inside a portfolio" class="img-logo">
+    </header>
+
+    <section id="login">
+
+        <label for="userName">Username:</label>
+        <input type="text" id="userName">
+        <label for="pwd">Password:</label>
+        <input type="password" id="password">
+        <input type="submit" id="logInButton" value="Submit">
+        <!-- <button id="logInButton">Log in</button> -->
+    </section>
+
+    <section id="movementContainer">
+
+        <input type="button" id="checkBalance" value="Check balance">
+        <!-- <button id="checkBalance"><b>Check balance</b></button> -->
+        <input type="button" id="enterAmount" value="'Enter amount'">
+        <input type="button" id="withdrawAmount" value="Withdraw amount">
+        <!-- <button><b>Enter amount</b></button> -->
+        <!-- <button><b>Withdraw amount</b></button> -->
+    </section>
+
+    <section id="balanceContainer">
+
+        <h4 id="currentBalance">Your current balance is: </h4>
+    </section>
+    
+</body>
+</html>

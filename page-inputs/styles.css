@@ -1,0 +1,15 @@
+.task {
+	display: block flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#alert{
+    background-color: yellow;
+    display: block flex;
+    align-items:  center;
+    gap: 1rem;
+    width: fit-content;
+    padding: 0.5rem;
+    display: none;
+}
