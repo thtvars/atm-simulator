@@ -7,7 +7,6 @@ let usersArray = [
 const loginContainer = document.getElementById('login');
 const accountContainer = document.getElementById('userName').value;
 let flag = 0;
-const positionArray = 0;
 
 const logInButton = document.getElementById('logInButton');
 logInButton.addEventListener('click', loginHandler);
@@ -16,12 +15,18 @@ const movementContainer = document.getElementById('movementContainer');
 movementContainer.style.display = 'none';
 const balanceContainer = document.getElementById('balanceContainer');
 balanceContainer.style.display = 'none';
+const enterAmountContainer = document.getElementById('enterAmountContainer');
+enterAmountContainer.style.display = 'none';
+const withdrawAmountContainer = document.getElementById('withdrawAmountContainer');
+withdrawAmountContainer.style.display = 'none';
 
 const checkBalance = document.getElementById('checkBalance');
 const enterAmount = document.getElementById('enterAmount');
 const withdrawAmount = document.getElementById('withdrawAmount');
 
 checkBalance.addEventListener('click', balanceFunction);
+enterAmount.addEventListener('click', enterAmountFunction);
+withdrawAmount.addEventListener('click', withdrawAmountFunction);
 
 function loginHandler() {
 
@@ -47,21 +52,6 @@ function loginHandler() {
     ]
 }
 
-switch (accountContainer) {
-    case 'ivan':
-        positionArray = 0;
-        break;
-    case 'majo':
-        positionArray = 1;
-        break;
-    case 'cindy':
-        positionArray = 2;
-        break;
-
-    default:
-        break;
-}
-
 function balanceFunction() {
     balanceContainer.style.display = 'block';
     movementContainer.style.display = 'none';
@@ -71,12 +61,27 @@ function balanceFunction() {
     //appending child element to node
     //list.appendChild(li);
 
+    let userName = document.getElementById('userName').value;
+
+    const userSelected = usersArray.find((user) => user.name === userName)
+    console.log(userSelected);
+
     const currentBalance = document.getElementById('currentBalance');
     const balance = document.createElement('balance');
-    balance.textContent = `${usersArray[positionArray].balance}`;
+    balance.textContent = `${userSelected.balance}`;
     currentBalance.appendChild(balance);
 }
 
+function enterAmountFunction(){
+    enterAmountContainer.style.display = 'block';
+    movementContainer.style.display = 'none';
+}
+
+
+function withdrawAmountFunction(){
+    withdrawAmountContainer.style.display = 'block';
+    movementContainer.style.display = 'none';
+}
 
 
 
