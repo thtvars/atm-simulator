@@ -20,13 +20,17 @@ enterAmountContainer.style.display = 'none';
 const withdrawAmountContainer = document.getElementById('withdrawAmountContainer');
 withdrawAmountContainer.style.display = 'none';
 
+//const newBalanceDiv = document.getElementById('newBalanceDiv');
+
 const checkBalance = document.getElementById('checkBalance');
 const enterAmount = document.getElementById('enterAmount');
 const withdrawAmount = document.getElementById('withdrawAmount');
 
+//! Buttons of types of events
 checkBalance.addEventListener('click', balanceFunction);
 enterAmount.addEventListener('click', enterAmountFunction);
 withdrawAmount.addEventListener('click', withdrawAmountFunction);
+
 
 function loginHandler() {
 
@@ -36,7 +40,7 @@ function loginHandler() {
     //console.log(pwdInput);
 
     const userSelected = usersArray.find((user) => user.name === userName)
-    console.log(userSelected);
+    //console.log(userSelected);
 
     const pwdSelected = userSelected.password;
 
@@ -61,24 +65,92 @@ function balanceFunction() {
     //appending child element to node
     //list.appendChild(li);
 
+    //* finding user
     let userName = document.getElementById('userName').value;
-
     const userSelected = usersArray.find((user) => user.name === userName)
-    console.log(userSelected);
+    //console.log(userSelected);
 
+    //*creating a new element who gonna be the balance
     const currentBalance = document.getElementById('currentBalance');
     const balance = document.createElement('balance');
     balance.textContent = `${userSelected.balance}`;
+    //*concatenating
     currentBalance.appendChild(balance);
 }
 
-function enterAmountFunction(){
+function enterAmountFunction() {
     enterAmountContainer.style.display = 'block';
     movementContainer.style.display = 'none';
+
+    //* finding user
+    let userName = document.getElementById('userName').value;
+    const userSelected = usersArray.find((user) => user.name === userName)
+    //console.log(userSelected);
+
+    //*finding position
+    let position = 0;
+    switch (userName) {
+
+        case 'ivan':
+            position = 0;
+            break;
+
+        case 'majo':
+            position = 1;
+            break;
+
+        case 'cindy':
+            position = 2;
+            break;
+
+        default:
+            break;
+    }
+
+    ///! calculation button
+    const quantityButton = document.getElementById('quantityButton')
+    quantityButton.addEventListener('click', enterAmountCalculate)
+    
+
+    function enterAmountCalculate() {
+        //newBalanceDiv.style.display = 'block';
+        //*creating a new variable for store the quantity enter
+        const quantityEnter = Number(document.getElementById('quantityEnter').value);
+        //console.log(userSelected.balance + quantityEnter);
+        //*calculating the new balance
+        const newBalance = Number(userSelected.balance + quantityEnter);
+        //*reassigning value
+        usersArray[position].balance = newBalance;
+        //console.log(usersArray[position].balance);
+
+        //*creating a new elements who gonna be the new balance and amount enter
+        const amount = document.getElementById('amount');
+        const rstBalance = document.getElementById('newBalance');
+
+        amount.style.display = 'inline';
+        rstBalance.style.display = 'inline';
+
+        //*storing text
+        const amount1 = document.createElement('h4');
+        const rstBalance1 = document.createElement('h4');
+        amount1.textContent = `${quantityEnter}`;
+        rstBalance1.textContent = `${newBalance}`
+
+        //*concatenating
+        amount.appendChild(amount1);
+        rstBalance.appendChild(rstBalance1);
+
+        //Creating elements
+    //const li = document.createElement('li');
+    //li.textContent = 'first element';
+    //appending child element to node
+    //list.appendChild(li);
+    }
 }
 
 
-function withdrawAmountFunction(){
+
+function withdrawAmountFunction() {
     withdrawAmountContainer.style.display = 'block';
     movementContainer.style.display = 'none';
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
 </head>
 
 <body>
-    <header> 
+    <header>
         <h2>Welcome to</h2>
         <h1>Tovar Bank</h1>
         <img src="mb-logo.jpg" alt="a minimalist logo the slogan inside a portfolio" class="img-logo">
@@ -40,12 +41,21 @@
     </section>
 
     <section id="enterAmountContainer">
-        <h4>How much would you like to enter?</h4>
+        <!-- <h4>How much would you like to enter?</h4> -->
+        <label for="quantity">How much would you like to enter?</label>
+        <input type="number" id="quantityEnter" name="quantity" min="1" max="10000">
+        <input type="submit" id="quantityButton" value="Submit">
+
+        <div>
+            <h4 id="amount">You have entered: $</h4>
+            <h4 id="newBalance">Your new balance: $</h4>
+        </div>
     </section>
 
     <section id="withdrawAmountContainer">
         <h4>How much would you like to retire?</h4>
     </section>
-    
+
 </body>
+
 </html>
