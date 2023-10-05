@@ -53,7 +53,14 @@
     </section>
 
     <section id="withdrawAmountContainer">
-        <h4>How much would you like to retire?</h4>
+        <label for="quantity">How much would you like to retire?</label>
+        <input type="number" name="quantityRetire" id="quantityRetire" min="1" max="10000">
+        <input type="submit" id="quantityRetireButton" value="Submit">
+
+        <div>
+            <h4 id="retire">You have retired: $</h4>
+            <h4 id="newBalanceRetire">Your new balance: $</h4>
+        </div>
     </section>
 
 </body>

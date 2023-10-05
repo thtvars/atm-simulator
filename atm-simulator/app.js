@@ -127,32 +127,100 @@ function enterAmountFunction() {
         const amount = document.getElementById('amount');
         const rstBalance = document.getElementById('newBalance');
 
-        amount.style.display = 'inline';
-        rstBalance.style.display = 'inline';
-
         //*storing text
         const amount1 = document.createElement('h4');
         const rstBalance1 = document.createElement('h4');
         amount1.textContent = `${quantityEnter}`;
-        rstBalance1.textContent = `${newBalance}`
+        rstBalance1.textContent = `${newBalance}`;
 
         //*concatenating
         amount.appendChild(amount1);
         rstBalance.appendChild(rstBalance1);
-
-        //Creating elements
-    //const li = document.createElement('li');
-    //li.textContent = 'first element';
-    //appending child element to node
-    //list.appendChild(li);
-    }
 }
-
+}
 
 
 function withdrawAmountFunction() {
     withdrawAmountContainer.style.display = 'block';
     movementContainer.style.display = 'none';
+
+    //* finding user
+    let userName = document.getElementById('userName').value;
+    const userSelected = usersArray.find((user) => user.name === userName)
+    //console.log(userSelected);
+
+    //*finding position
+    let position = 0;
+    switch (userName) {
+
+        case 'ivan':
+            position = 0;
+            break;
+
+        case 'majo':
+            position = 1;
+            break;
+
+        case 'cindy':
+            position = 2;
+            break;
+
+        default:
+            break;
+    }
+
+    ///! calculation button
+    const quantityRetireButton = document.getElementById('quantityRetireButton');
+    quantityRetireButton,addEventListener('click', retireAmountCalculate);
+
+
+    //newBalanceDiv.style.display = 'block';
+        //*creating a new variable for store the quantity enter
+        //const quantityEnter = Number(document.getElementById('quantityEnter').value);
+        //console.log(userSelected.balance + quantityEnter);
+        //*calculating the new balance
+        //const newBalance = Number(userSelected.balance + quantityEnter);
+        //*reassigning value
+        //usersArray[position].balance = newBalance;
+        //console.log(usersArray[position].balance);
+
+        //*creating a new elements who gonna be the new balance and amount enter
+        //const amount = document.getElementById('amount');
+        //const rstBalance = document.getElementById('newBalance');
+
+        //*storing text
+        //const amount1 = document.createElement('h4');
+        //const rstBalance1 = document.createElement('h4');
+        //amount1.textContent = `${quantityEnter}`;
+        //rstBalance1.textContent = `${newBalance}`
+
+        //*concatenating
+        //amount.appendChild(amount1);
+        //rstBalance.appendChild(rstBalance1);
+    function retireAmountCalculate(){
+        //*creating a new variable for store the quantity retired
+        const quantityRetire = Number(document.getElementById('quantityRetire').value);
+        //*calculating the new balance
+        const newBalance = Number(userSelected.balance + quantityRetire);
+        //*reassigning value
+        usersArray[position].balance = newBalance;
+        console.log(usersArray[position].balance);
+
+        //*creating a new elements who gonna be the new balance and amount retired
+        const retire = document.getElementById('retire');
+        const newBalanceRetire = document.getElementById('newBalanceRetire');
+
+        //*storing text
+        const retire1 = document.createElement('h4');
+        const newBalanceRetire1 = document.createElement('h4');
+        retire1.textContent = `${quantityRetire}`;
+        newBalanceRetire1.textContent = `${newBalance}`;
+
+        //*concatenating
+        retire.appendChild(retire1);
+        newBalanceRetire.appendChild(newBalanceRetire1);
+    }
+
 }
 
 
