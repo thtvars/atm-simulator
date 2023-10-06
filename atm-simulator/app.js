@@ -107,7 +107,7 @@ function enterAmountFunction() {
             break;
     }
 
-    ///! calculation button
+    ///! calculation button activation
     const quantityButton = document.getElementById('quantityButton')
     quantityButton.addEventListener('click', enterAmountCalculate)
     
@@ -136,9 +136,10 @@ function enterAmountFunction() {
         //*concatenating
         amount.appendChild(amount1);
         rstBalance.appendChild(rstBalance1);
-}
-}
 
+        bussinesRules();
+}
+}
 
 function withdrawAmountFunction() {
     withdrawAmountContainer.style.display = 'block';
@@ -169,39 +170,15 @@ function withdrawAmountFunction() {
             break;
     }
 
-    ///! calculation button
+    ///! calculation button activation
     const quantityRetireButton = document.getElementById('quantityRetireButton');
-    quantityRetireButton,addEventListener('click', retireAmountCalculate);
+    quantityRetireButton.addEventListener('click', retireAmountCalculate);
 
-
-    //newBalanceDiv.style.display = 'block';
-        //*creating a new variable for store the quantity enter
-        //const quantityEnter = Number(document.getElementById('quantityEnter').value);
-        //console.log(userSelected.balance + quantityEnter);
-        //*calculating the new balance
-        //const newBalance = Number(userSelected.balance + quantityEnter);
-        //*reassigning value
-        //usersArray[position].balance = newBalance;
-        //console.log(usersArray[position].balance);
-
-        //*creating a new elements who gonna be the new balance and amount enter
-        //const amount = document.getElementById('amount');
-        //const rstBalance = document.getElementById('newBalance');
-
-        //*storing text
-        //const amount1 = document.createElement('h4');
-        //const rstBalance1 = document.createElement('h4');
-        //amount1.textContent = `${quantityEnter}`;
-        //rstBalance1.textContent = `${newBalance}`
-
-        //*concatenating
-        //amount.appendChild(amount1);
-        //rstBalance.appendChild(rstBalance1);
     function retireAmountCalculate(){
         //*creating a new variable for store the quantity retired
         const quantityRetire = Number(document.getElementById('quantityRetire').value);
         //*calculating the new balance
-        const newBalance = Number(userSelected.balance + quantityRetire);
+        const newBalance = Number(userSelected.balance - quantityRetire);
         //*reassigning value
         usersArray[position].balance = newBalance;
         console.log(usersArray[position].balance);
@@ -219,77 +196,18 @@ function withdrawAmountFunction() {
         //*concatenating
         retire.appendChild(retire1);
         newBalanceRetire.appendChild(newBalanceRetire1);
+
+        bussinesRules();
     }
 
+    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//const pwdSelected = usersArray.find((user) => user.password === pwdInput);
-// console.log(pwdInput);
-
-/*for (let i = 0; i < usersArray.length; i++){
-
-    if (usersArray[i].name == userName){
-        console.log(usersArray[i].name);
+function bussinesRules (){
+    for(let i = 0; i <usersArray.length; i++){
+        if(usersArray[0].balance < 10 || usersArray[0].balance > 990){
+            alert('@user does not have enough money');
+            console.log(usersArray[0].balance);
+        }
     }
-}*/
-
-/*let usersArray = [
-    {
-        name: ['Ivan', "Majo", "Cindy"],
-        balance: [200, 290, 67]
-    }
-];*/
-
-/*do {
-    let user = prompt('User:');
-
-    switch (user) {
-        case 'ivan':
-            console.log(`${usersArray[0].name} has $${usersArray[0].balance}`);
-            flag = 1;
-
-            let password = prompt('Input your password:')
-            if (password == 'ivan123'){
-                console.log('you are in')
-            }
-            break;
-
-        case 'majo':
-            console.log(`${usersArray[1].name} has $${usersArray[1].balance}`);
-            flag = 1;
-            break;
-
-        case 'cindy':
-            console.log(`${usersArray[2].name} has $${usersArray[2].balance}`);
-            flag = 1;
-            break;
-
-        default:
-            alert('Input a valid user');
-            break;
-    }
-} while (flag == 0);
-*/
+}
